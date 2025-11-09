@@ -1,6 +1,6 @@
 package observer;
 
-public interface notifier {
+public interface Notifier {
     void registerObserver(Observer o);
     void removeObserver(Observer o);
     void notifyObservers(String order);

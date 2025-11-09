@@ -1,8 +1,8 @@
 package observer;
 import java.util.List;
-
-public class order implements notifier {
-    private List<Observer> observers;
+import java.util.ArrayList;
+public class Order implements Notifier {
+    private List<Observer> observers= new ArrayList<>();
     public void registerObserver(Observer o){
         observers.add(o);
     };
