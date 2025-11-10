@@ -1,6 +1,6 @@
 package strategy.discount;
 
-public class meetdis implements applydiscount {
+public class meatdis implements applydiscount {
     @Override
     public double apply(double price) {
         return price * 0.55; }

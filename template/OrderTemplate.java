@@ -1,9 +1,9 @@
 package template;
 
 import abstract_farctory.menuItem;
-import observer.Order;
+import observer.order;
 import observer.Kitchen;
-import observer.Waiter;
+import observer.waiter;
 
 public abstract class OrderTemplate {
 
@@ -19,18 +19,17 @@ public abstract class OrderTemplate {
     }
 
     private void prepareOrder(menuItem item) {
-        System.out.println(" Preparing: " + item.getName());
-
-        // Notify kitchen and waiter using Observer
-        Order notifier = new Order();
+        order notifier = new order();
         Kitchen kitchen = new Kitchen();
-        Waiter waiter = new Waiter();
+        waiter waiter = new waiter();
         notifier.registerObserver(kitchen);
         notifier.registerObserver(waiter);
         notifier.notifyObservers(item.getName());
+        System.out.println(" Preparing: " + item.getName());
+        
     }
 
-    protected abstract void serveOrDeliver(); // customizable by subclass
+    protected abstract void serveOrDeliver(); 
 
     private void generateBill(menuItem item) {
         System.out.println("💰 Total Price: $" + item.getPrice());

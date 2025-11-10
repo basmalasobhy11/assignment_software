@@ -11,8 +11,6 @@ public class VegMenuFactory implements MenuItemFactory  {
                 return new BaseMenuItem("Italian Pizza", 10.0) {};
             case "eastern pizza":
                 return new BaseMenuItem("Eastern Pizza", 12.0) {};
-            case "classic burger":
-                return new BaseMenuItem("Classic Burger", 8.0) {};
             default:
                 throw new IllegalArgumentException("Unknown Veg menu item: " + type);
         }

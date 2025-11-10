@@ -1,9 +1,10 @@
 
 package facade;
 import observer.Kitchen;
-import observer.Waiter;
-import observer.Order;
-import observer.Notifier;
+import observer.waiter;
+import observer.order;
+
+import observer.notifier;
 import abstract_farctory.menuItem;
 import abstract_farctory.BaseMenuItem;
 import abstract_farctory.factory_method.*;
@@ -20,24 +21,28 @@ public class RestaurantFacade {
     private MenuItemFactory vegFactory;
     private MenuItemFactory noVegFactory;
     private MenuItemFactory kidsFactory;
-    private Notifier orderNotifier;
+
+    private notifier orderNotifier;
 
     public RestaurantFacade() {
+
         
         this.vegFactory = new VegMenuFactory();
         this.noVegFactory = new NoVegMenuFactory();
         this.kidsFactory = new KidsMenuFactory();
-        this.orderNotifier = new Order();
+
+        this.orderNotifier = new order();
         this.orderNotifier.registerObserver(new Kitchen());
-        this.orderNotifier.registerObserver(new Waiter());
+
+        this.orderNotifier.registerObserver(new waiter());
     }
-    void DisplayMenu(String category) {
+    public void DisplayMenu(String category) {
         List<BaseMenuItem> menuItems = new ArrayList<>();
         switch (category.toLowerCase()) {
             case "veg":
                 menuItems.add(vegFactory.createMenuItem("Italian pizza"));
                 menuItems.add(vegFactory.createMenuItem("Eastern Pizza"));
-                menuItems.add(vegFactory.createMenuItem("Classic Burger"));
+            
                 break;
             case "non-veg":
                 menuItems.add(noVegFactory.createMenuItem("Chicken Pizza"));
@@ -89,26 +94,12 @@ public class RestaurantFacade {
         } else {
             OrderWorkFlow = new DineInOrder();
         }
-        // Process the order using the template method
+    
+
         OrderWorkFlow.processOrder(item);
-
-        // Notify kitchen and waiter
-        orderNotifier.notifyObservers(item.getName());
-
-        // Apply discount
         double discountedPrice = discountStrategy.apply(item.getPrice());
-        System.out.println("💸 Price after discount: $" + discountedPrice);
-
-        // Process payment
+         System.out.println("price after discount: $" + discountedPrice);
         paymentStrategy.pay(discountedPrice);
 
-        // Generate recipe
-        generateRecipe(item,discountedPrice,isDelivery);
-
     }
-    private void generateRecipe(menuItem item,double finalPrice,boolean isDelivery) {
-        System.out.println("📜 Recipe for " + item.getName() + ":");
-        System.out.println("price: $" + finalPrice);
-        System.out.println("Delivery: " + (isDelivery ? "Yes" : "No"));
-    
-}};
+};

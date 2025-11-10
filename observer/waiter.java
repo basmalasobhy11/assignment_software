@@ -1,6 +1,6 @@
 package observer;
 
-public class Waiter implements Observer {
+public class waiter implements Observer {
 
     @Override
     public void update(String order) {
