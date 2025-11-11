@@ -1,7 +1,7 @@
 package decorator;
 import abstract_farctory.menuItem;
 public class ExtraSause extends AddOns {
-    protected menuItem Item;
+    
     public ExtraSause(menuItem Item) {
         super(Item);
     }

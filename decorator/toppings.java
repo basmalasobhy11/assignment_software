@@ -1,7 +1,7 @@
 package decorator;
 import abstract_farctory.menuItem;
 public class toppings extends AddOns {
-    protected menuItem Item;
+    
     public toppings(menuItem Item) {
         super(Item);
     }
