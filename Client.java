@@ -28,7 +28,7 @@ public class Client {
         menuItem item = null;
         while (item == null) {
             System.out.print("Enter the item name you want to order: ");
-            String itemName = sc.nextLine().trim().toLowerCase();
+            String itemName = sc.nextLine().trim();
             item = restaurant.selectMenuItem(category, itemName);
             if (item == null) {
                 System.out.println("Invalid item. Please select a valid menu item.");

@@ -3,5 +3,8 @@ package strategy.discount;
 public class pizzaDis implements applydiscount {
     @Override
     public double apply(double price) {
-        return price * 0.85; }
+        double result = price * 0.85;
+        return Math.round(result * 100.0) / 100.0; 
+    }
+
 }

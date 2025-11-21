@@ -13,11 +13,21 @@ public class OrderManager {
         this.orderNotifier.registerObserver(new waiter());
     }
 
-    public void prepareOrder(menuItem item, boolean addCheese, boolean addSause, boolean addToppings) {
-        if (addCheese) item = new ExtraCheese(item);
-        if (addSause) item = new ExtraSause(item);
-        if (addToppings) item = new toppings(item);
+   public menuItem prepareOrder(menuItem item, boolean addCheese, boolean addSauce, boolean addToppings) {
 
-        orderNotifier.notifyObservers("New order placed: " + item.getName() + " | Price: " + item.getPrice());
+    menuItem finalItem = item;
+
+    if (addCheese) {
+        finalItem = new ExtraCheese(finalItem);
     }
+    if (addSauce) {
+        finalItem = new ExtraSause(finalItem);
+    }
+    if (addToppings) {
+        finalItem = new toppings(finalItem);
+    }
+
+    return finalItem;
+}
+
 }

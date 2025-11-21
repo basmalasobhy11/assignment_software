@@ -3,6 +3,7 @@ package facade;
 import abstract_farctory.menuItem;
 import strategy.discount.applydiscount;
 import strategy.payment.payment;
+import decorator.*;
 
 public class RestaurantFacade {
 
@@ -29,10 +30,10 @@ public class RestaurantFacade {
     }
 
     public void placeOrder(menuItem item, boolean addCheese, boolean addSauce, boolean addToppings,
-                           applydiscount discountStrategy, payment paymentMethod) {
+                       applydiscount discountStrategy, payment paymentMethod) {
 
-        // 1. Prepare order (with add-ons)
-        orderManager.prepareOrder(item, addCheese, addSauce, addToppings);
+    // 1. Decorate item with add-ons
+         item = orderManager.prepareOrder(item, addCheese, addSauce, addToppings);
 
         // 2. Calculate price with discount
         double originalPrice = item.getPrice();

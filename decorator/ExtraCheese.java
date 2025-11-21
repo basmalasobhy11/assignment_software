@@ -8,12 +8,11 @@ public class ExtraCheese extends AddOns {
 
     @Override
     public String getName() {
-        return Item.getName() + " + Extra Cheese";
+        return Item.getName() + " + Cheese";
     }
 
     @Override
     public double getPrice() {
-        return Item.getPrice() + 1.5;
+        return Item.getPrice() + 10;
     }
-    
 }
