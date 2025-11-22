@@ -7,11 +7,11 @@ import observer.waiter;
 
 public abstract class OrderTemplate {
 
-    public final void processOrder(menuItem item) {
+    public final void processOrder(menuItem item, double finalPrice) {
         takeOrder(item);
         prepareOrder(item);
         serveOrDeliver();
-        generateBill(item);
+        generateBill(item, finalPrice);
     }
 
     private void takeOrder(menuItem item) {
@@ -31,8 +31,8 @@ public abstract class OrderTemplate {
 
     protected abstract void serveOrDeliver(); 
 
-    private void generateBill(menuItem item) {
-        System.out.println("💰 Total Price: $" + item.getPrice());
+    private void generateBill(menuItem item, double finalPrice) {
+        System.out.println("💰 Total Price: $" + finalPrice);
     }
 }
 

@@ -11,7 +11,7 @@ public class Client {
 
         System.out.println("===== WELCOME TO THE RESTAURANT =====");
 
-        // 1. Choose category
+       
         String category = "";
         while (category.isEmpty()) {
             System.out.println("Available categories: Veg, Non-Veg, Kids");
@@ -24,7 +24,7 @@ public class Client {
 
         restaurant.showMenu(category);
 
-        // 2. Choose item
+        
         menuItem item = null;
         while (item == null) {
             System.out.print("Enter the item name you want to order: ");
@@ -35,7 +35,7 @@ public class Client {
             }
         }
 
-        // 3. Add-ons
+        
         System.out.print("Add extra cheese? (yes/no): ");
         boolean addCheese = sc.nextLine().trim().equalsIgnoreCase("yes");
 
@@ -45,11 +45,11 @@ public class Client {
         System.out.print("Add extra toppings? (yes/no): ");
         boolean addToppings = sc.nextLine().trim().equalsIgnoreCase("yes");
 
-        // 4. Order type (optional, can be used in future)
+        
         System.out.print("Order type (dine-in/delivery): ");
         boolean isDelivery = sc.nextLine().trim().equalsIgnoreCase("delivery");
 
-        // 5. Discount selection
+        
         applydiscount discountStrategy = null;
         while (discountStrategy == null) {
             System.out.println("Available discounts: pizza, chicken, meat");
@@ -65,14 +65,14 @@ public class Client {
             }
         }
 
-        // 6. Payment selection
+        
         payment paymentMethod = null;
         while (paymentMethod == null) {
-            paymentMethod = restaurant.choosePayment(); // facade handles input
+            paymentMethod = restaurant.choosePayment(); 
         }
 
-        // 7. Place order
-        restaurant.placeOrder(item, addCheese, addSauce, addToppings, discountStrategy, paymentMethod);
+        
+    restaurant.placeOrder(item, addCheese, addSauce, addToppings, discountStrategy, paymentMethod, isDelivery);
 
         System.out.println("\nThank you for your order!");
         sc.close();

@@ -30,19 +30,23 @@ public class RestaurantFacade {
     }
 
     public void placeOrder(menuItem item, boolean addCheese, boolean addSauce, boolean addToppings,
-                       applydiscount discountStrategy, payment paymentMethod) {
+            applydiscount discountStrategy, payment paymentMethod, boolean isDelivery) {
 
-    // 1. Decorate item with add-ons
+    
          item = orderManager.prepareOrder(item, addCheese, addSauce, addToppings);
 
-        // 2. Calculate price with discount
+        
         double originalPrice = item.getPrice();
         double finalPrice = discountStrategy.apply(originalPrice);
 
         System.out.println("Original price: " + originalPrice);
         System.out.println("Price after discount: " + finalPrice);
 
-        // 3. Process payment
+        
         paymentManager.processPayment(paymentMethod, finalPrice, null);
+
+        
+        template.OrderTemplate orderTemplate = isDelivery ? new template.DeliveryOrder() : new template.DineInOrder();
+        orderTemplate.processOrder(item, finalPrice);
     }
 }

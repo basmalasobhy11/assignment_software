@@ -16,6 +16,7 @@ public class OrderManager {
    public menuItem prepareOrder(menuItem item, boolean addCheese, boolean addSauce, boolean addToppings) {
 
     menuItem finalItem = item;
+  
 
     if (addCheese) {
         finalItem = new ExtraCheese(finalItem);
@@ -29,5 +30,6 @@ public class OrderManager {
 
     return finalItem;
 }
+
 
 }
